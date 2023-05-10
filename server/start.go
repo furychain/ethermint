@@ -43,10 +43,10 @@ import (
 	"github.com/evmos/ethermint/server/config"
 	srvflags "github.com/evmos/ethermint/server/flags"
 
-	dymintconf "github.com/dymensionxyz/dymint/config"
-	dymintconv "github.com/dymensionxyz/dymint/conv"
-	dymintnode "github.com/dymensionxyz/dymint/node"
-	dymintrpc "github.com/dymensionxyz/dymint/rpc"
+	furyintconf "github.com/furychain/furyint/config"
+	furyintconv "github.com/furychain/furyint/conv"
+	furyintnode "github.com/furychain/furyint/node"
+	furyintrpc "github.com/furychain/furyint/rpc"
 )
 
 // StartCmd runs the service passed in, either stand-alone or in-process with
@@ -99,7 +99,7 @@ which accepts a path for the resulting pprof file.
 
 			withTM, _ := cmd.Flags().GetBool(srvflags.WithTendermint)
 			if !withTM {
-				serverCtx.Logger.Info("starting ABCI without Dymint")
+				serverCtx.Logger.Info("starting ABCI without Furyint")
 				return startStandAlone(serverCtx, appCreator)
 			}
 
@@ -114,7 +114,7 @@ which accepts a path for the resulting pprof file.
 				}
 			}
 
-			serverCtx.Logger.Info("starting ABCI with Dymint")
+			serverCtx.Logger.Info("starting ABCI with Furyint")
 
 			// amino is needed here for backwards compatibility of REST routes
 			err = startInProcess(serverCtx, clientCtx, appCreator)
@@ -180,7 +180,7 @@ which accepts a path for the resulting pprof file.
 
 	// add support for all Tendermint-specific command line options
 	tcmd.AddNodeFlags(cmd)
-	dymintconf.AddFlags(cmd)
+	furyintconf.AddFlags(cmd)
 	return cmd
 }
 
@@ -310,12 +310,12 @@ func startInProcess(ctx *server.Context, clientCtx client.Context, appCreator ty
 
 	genDocProvider := node.DefaultGenesisDocProviderFunc(cfg)
 
-	// keys in dymint format
-	p2pKey, err := dymintconv.GetNodeKey(nodeKey)
+	// keys in furyint format
+	p2pKey, err := furyintconv.GetNodeKey(nodeKey)
 	if err != nil {
 		return err
 	}
-	signingKey, err := dymintconv.GetNodeKey(privValKey)
+	signingKey, err := furyintconv.GetNodeKey(privValKey)
 	if err != nil {
 		return err
 	}
@@ -323,18 +323,18 @@ func startInProcess(ctx *server.Context, clientCtx client.Context, appCreator ty
 	if err != nil {
 		return err
 	}
-	nodeConfig := dymintconf.NodeConfig{}
+	nodeConfig := furyintconf.NodeConfig{}
 	err = nodeConfig.GetViperConfig(ctx.Viper)
 	if err != nil {
 		return err
 	}
-	dymintconv.GetNodeConfig(&nodeConfig, cfg)
-	err = dymintconv.TranslateAddresses(&nodeConfig)
+	furyintconv.GetNodeConfig(&nodeConfig, cfg)
+	err = furyintconv.TranslateAddresses(&nodeConfig)
 	if err != nil {
 		return err
 	}
 
-	tmNode, err := dymintnode.NewNode(
+	tmNode, err := furyintnode.NewNode(
 		context.Background(),
 		nodeConfig,
 		p2pKey,
@@ -344,7 +344,7 @@ func startInProcess(ctx *server.Context, clientCtx client.Context, appCreator ty
 		ctx.Logger,
 	)
 
-	srv := dymintrpc.NewServer(tmNode, cfg.RPC, ctx.Logger)
+	srv := furyintrpc.NewServer(tmNode, cfg.RPC, ctx.Logger)
 	err = srv.Start()
 	if err != nil {
 		logger.Error("failed init node", "error", err.Error())

@@ -83,14 +83,14 @@ if [[ $1 == "pending" ]]; then
 fi
 
 # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-ethermintd start --dymint.aggregator true \
-  --dymint.da_layer mock \
-  --dymint.settlement_config "{\"root_dir\": \"$HOME/.ethermintd\", \"db_path\": \"data\"}" \
-  --dymint.settlement_layer mock \
+ethermintd start --furyint.aggregator true \
+  --furyint.da_layer mock \
+  --furyint.settlement_config "{\"root_dir\": \"$HOME/.ethermintd\", \"db_path\": \"data\"}" \
+  --furyint.settlement_layer mock \
   --pruning=nothing \
   --minimum-gas-prices=0.0001aphoton\
-  --dymint.block_batch_size 1000 \
-  --dymint.namespace_id 000000000000FFFF \
-  --dymint.block_time 0.5s \
+  --furyint.block_batch_size 1000 \
+  --furyint.namespace_id 000000000000FFFF \
+  --furyint.block_time 0.5s \
   --json-rpc.api eth,txpool,personal,net,debug,web3,miner \
   --api.enable

@@ -40,7 +40,7 @@ message AuthnDescriptor {
 }
 
 // SigningModeDescriptor provides information on a signing flow of the application
-// NOTE(fdymylja): here we could go as far as providing an entire flow on how
+// NOTE(ffuryylja): here we could go as far as providing an entire flow on how
 // to sign a message given a SigningModeDescriptor, but it's better to think about
 // this another time
 message SigningModeDescriptor {

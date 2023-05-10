@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	dymintnode "github.com/dymensionxyz/dymint/node"
+	furyintnode "github.com/furychain/furyint/node"
 	"net/http"
 	"net/url"
 	"os"
@@ -174,7 +174,7 @@ type (
 		RPCClient     tmclient.Client
 		JSONRPCClient *ethclient.Client
 
-		tmNode      *dymintnode.Node
+		tmNode      *furyintnode.Node
 		api         *api.Server
 		grpc        *grpc.Server
 		grpcWeb     *http.Server

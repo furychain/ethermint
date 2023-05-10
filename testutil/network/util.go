@@ -30,10 +30,10 @@ import (
 	"github.com/evmos/ethermint/server"
 	evmtypes "github.com/evmos/ethermint/x/evm/types"
 
-	dymintconf "github.com/dymensionxyz/dymint/config"
-	dymintconv "github.com/dymensionxyz/dymint/conv"
-	dymintnode "github.com/dymensionxyz/dymint/node"
-	rpcclient "github.com/dymensionxyz/dymint/rpc/client"
+	furyintconf "github.com/furychain/furyint/config"
+	furyintconv "github.com/furychain/furyint/conv"
+	furyintnode "github.com/furychain/furyint/node"
+	rpcclient "github.com/furychain/furyint/rpc/client"
 )
 
 func startInProcess(cfg Config, val *Validator) error {
@@ -54,7 +54,7 @@ func startInProcess(cfg Config, val *Validator) error {
 
 	genDocProvider := node.DefaultGenesisDocProviderFunc(tmCfg)
 	// node key in optimint format
-	oNodeKey, err := dymintconv.GetNodeKey(nodeKey)
+	oNodeKey, err := furyintconv.GetNodeKey(nodeKey)
 	if err != nil {
 		return err
 	}
@@ -62,20 +62,20 @@ func startInProcess(cfg Config, val *Validator) error {
 	if err != nil {
 		return err
 	}
-	nodeConfig := dymintconf.NodeConfig{}
+	nodeConfig := furyintconf.NodeConfig{}
 	err = nodeConfig.GetViperConfig(val.Ctx.Viper)
 	if err != nil {
 		return err
 	}
-	dymintconv.GetNodeConfig(&nodeConfig, tmCfg)
-	err = dymintconv.TranslateAddresses(&nodeConfig)
+	furyintconv.GetNodeConfig(&nodeConfig, tmCfg)
+	err = furyintconv.TranslateAddresses(&nodeConfig)
 	if err != nil {
 		return err
 	}
 	nodeConfig.DALayer = "mock"
 	nodeConfig.Aggregator = true
 	nodeConfig.BlockTime = 1 * time.Second
-	tmNode, err := dymintnode.NewNode(
+	tmNode, err := furyintnode.NewNode(
 		context.Background(),
 		nodeConfig,
 		oNodeKey,

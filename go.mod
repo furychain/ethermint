@@ -10,7 +10,7 @@ require (
 	github.com/cosmos/go-bip39 v1.0.0
 	github.com/cosmos/ibc-go/v3 v3.1.0
 	github.com/davecgh/go-spew v1.1.1
-	github.com/dymensionxyz/dymint v0.2.2-alpha
+	github.com/furychain/furyint v0.2.3-alpha
 	github.com/ethereum/go-ethereum v1.10.16
 	github.com/gogo/protobuf v1.3.3
 	github.com/golang/protobuf v1.5.2
@@ -82,8 +82,8 @@ require (
 	github.com/docker/go-units v0.4.0 // indirect
 	github.com/dustin/go-humanize v1.0.1-0.20200219035652-afde56e7acac // indirect
 	github.com/dvsekhvalnov/jose2go v1.5.0 // indirect
-	github.com/dymensionxyz/cosmosclient v0.2.0-alpha // indirect
-	github.com/dymensionxyz/dymension v0.0.0-20220906152713-9cfb350c86bd // indirect
+	github.com/furychain/cosmosclient v0.3.3-gamma // indirect
+	github.com/furychain/furya v0.0.1 // indirect
 	github.com/edsrzf/mmap-go v1.0.0 // indirect
 	github.com/elastic/gosigar v0.14.2 // indirect
 	github.com/felixge/httpsnoop v1.0.1 // indirect
