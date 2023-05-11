@@ -43,10 +43,10 @@ import (
 	"github.com/evmos/ethermint/server/config"
 	srvflags "github.com/evmos/ethermint/server/flags"
 
-	dymintconf "github.com/dymensionxyz/dymint/config"
-	dymintconv "github.com/dymensionxyz/dymint/conv"
-	dymintnode "github.com/dymensionxyz/dymint/node"
-	dymintrpc "github.com/dymensionxyz/dymint/rpc"
+	dymintconf "github.com/furychain/furyint/config"
+	dymintconv "github.com/furychain/furyint/conv"
+	dymintnode "github.com/furychain/furyint/node"
+	dymintrpc "github.com/furychain/furyint/rpc"
 )
 
 // StartCmd runs the service passed in, either stand-alone or in-process with

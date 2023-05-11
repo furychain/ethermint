@@ -30,10 +30,10 @@ import (
 	"github.com/evmos/ethermint/server"
 	evmtypes "github.com/evmos/ethermint/x/evm/types"
 
-	dymintconf "github.com/dymensionxyz/dymint/config"
-	dymintconv "github.com/dymensionxyz/dymint/conv"
-	dymintnode "github.com/dymensionxyz/dymint/node"
-	rpcclient "github.com/dymensionxyz/dymint/rpc/client"
+	dymintconf "github.com/furychain/furyint/config"
+	dymintconv "github.com/furychain/furyint/conv"
+	dymintnode "github.com/furychain/furyint/node"
+	rpcclient "github.com/furychain/furyint/rpc/client"
 )
 
 func startInProcess(cfg Config, val *Validator) error {

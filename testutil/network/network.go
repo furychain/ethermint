@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	dymintnode "github.com/dymensionxyz/dymint/node"
+	dymintnode "github.com/furychain/furyint/node"
 	"net/http"
 	"net/url"
 	"os"
